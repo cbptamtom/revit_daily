@@ -1,0 +1,12 @@
+﻿<RevitAddIns>
+    <AddIn Type="Command">
+        <Name>Create_section</Name>
+        <Assembly>Create_section/Create_section.dll</Assembly>
+        <AddInId>608CF7C6-B9C8-4B25-9519-818879FBF2AF</AddInId>
+        <FullClassName>Create_section.Commands.StartupCommand</FullClassName>
+        <Text>Create_section</Text>
+        <VendorId>Development</VendorId>
+        <VendorDescription></VendorDescription>
+        <VendorEmail></VendorEmail>
+    </AddIn>
+</RevitAddIns>
