@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Tam.Chau\\Desktop\\CODE\\Create section\\Create section\\TestingMethod.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Tam.Chau\\Desktop\\CODE\\Create section\\Create section\\TestingMethod.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Tam.Chau\\Desktop\\CODE\\Create section\\Create section\\TestingMethod.csproj",
+        "projectName": "TestingMethod",
+        "projectPath": "C:\\Users\\Tam.Chau\\Desktop\\CODE\\Create section\\Create section\\TestingMethod.csproj",
+        "packagesPath": "C:\\Users\\Tam.Chau\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tam.Chau\\Desktop\\CODE\\Create section\\Create section\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Tam.Chau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net48",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net48",
+          "dependencies": {
+            "Nice3point.Revit.Api.RevitAPI": {
+              "target": "Package",
+              "version": "[2023.*, )"
+            },
+            "Nice3point.Revit.Api.RevitAPIUI": {
+              "target": "Package",
+              "version": "[2023.*, )"
+            },
+            "Nice3point.Revit.Build.Tasks": {
+              "target": "Package",
+              "version": "[2.*, )"
+            },
+            "Nice3point.Revit.Extensions": {
+              "target": "Package",
+              "version": "[2023.*, )"
+            },
+            "Nice3point.Revit.Toolkit": {
+              "target": "Package",
+              "version": "[2023.*, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

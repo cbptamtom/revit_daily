@@ -16,70 +16,46 @@ namespace Create_section.Commands
     {
         public override void Execute()
         {
-            var selectionConfiguration = new SelectionConfiguration()
-                .Allow.Element(e => e is Wall);
+            //var selectionConfiguration = new SelectionConfiguration()
+            //    .Allow.Element(e => e is Wall);
+            //var reference = UiDocument.Selection.PickObject(ObjectType.Element, selectionConfiguration.Filter);
 
-            var reference = UiDocument.Selection.PickObject(ObjectType.Element, selectionConfiguration.Filter);
 
-
-            var wall = reference.ElementId.ToElement(Document)!;
-            var wallLocation = wall.Location as LocationCurve;
-            var line = wallLocation.Curve as Line;
-
-            // Determine section box
-            var p = line.GetEndPoint(0);
-            var q = line.GetEndPoint(1);
-            var v = q - p;
-            BoundingBoxXYZ bb = wall.get_BoundingBox(null);
-            double minZ = bb.Min.Z;
-            double maxZ = bb.Max.Z;
-            double w = v.GetLength();
-            double h = maxZ - minZ;
-            double offset = 0.1 * w;
-            //var min = new XYZ(-w, minZ - offset, -offset);
-            //var max = new XYZ(w, maxZ + offset, 0);
-
-            //var temp = new XYZ(X, Y, X);
-
-            var min = new XYZ(-w + 2 * h, -offset - h - 3, -offset);
-            var max = new XYZ(w - 2 * h, 3, 0);
-
-            var midpoint = p + 0.5 * v;
-            var walldir = v.Normalize();
-            var up = XYZ.BasisZ;
-            var viewdir = walldir.CrossProduct(up);
-            var t = Transform.Identity;
-            t.Origin = midpoint;
-            t.BasisX = walldir;
-            t.BasisY = up;
-            t.BasisZ = viewdir;
-            var sectionBox = new BoundingBoxXYZ
+            var activeView = UiDocument.Document.ActiveView;
+            if (activeView is ViewSheet sheet)
             {
-                Transform = t,
-                Min = min,
-                Max = max
-            };
+                foreach (var view in sheet.GetAllPlacedViews())
+                {
+                    var stdBreak = new FilteredElementCollector(UiDocument.Document, view)
+                               .OfClass(typeof(FamilyInstance))
+                               .Cast<FamilyInstance>()
+                               .Where(x => x.Name.Equals("Std Break") || x.Name.Equals("Pipe Break"));
+                    var placeView = UiDocument.Document.GetElement(view) as View;
+                    var scale = placeView.Scale;
+                    using Transaction tx = new(Document);
+                    tx.Start("x");
+                    foreach (var element in stdBreak)
+                    {
+                        element.LookupParameter("Scale").Set(scale / 304.8);
+                    }
+                    tx.Commit();
+                }
+                MessageBox.Show("Success");
+
+            }
+
+
 
 
             //get section type
-            var section = new FilteredElementCollector(UiDocument.Document)
-                                .OfClass(typeof(ViewFamilyType))
-                                .Cast<ViewFamilyType>()
-                                .FirstOrDefault(x => ViewFamily.Section == x.ViewFamily);
-
-
-
-            using Transaction tx = new(Document);
-            tx.Start("Create Wall Section View");
-            var createdSec = ViewSection.CreateSection(Document, section.Id, sectionBox);
+            //var section = new FilteredElementCollector(UiDocument.Document)
+            //                    .OfClass(typeof(ViewFamilyType))
+            //                    .Cast<ViewFamilyType>()
+            //                    .FirstOrDefault(x => ViewFamily.Section == x.ViewFamily);
 
 
 
 
-
-            //MessageBox.Show(createdSec.Name);
-
-            tx.Commit();
 
 
         }

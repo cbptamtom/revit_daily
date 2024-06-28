@@ -195,9 +195,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tam.Chau\\Desktop\\CODE\\Create section\\Create section\\Create section.csproj",
-      "projectName": "Create section",
-      "projectPath": "C:\\Users\\Tam.Chau\\Desktop\\CODE\\Create section\\Create section\\Create section.csproj",
+      "projectUniqueName": "C:\\Users\\Tam.Chau\\Desktop\\CODE\\Create section\\Create section\\TestingMethod.csproj",
+      "projectName": "TestingMethod",
+      "projectPath": "C:\\Users\\Tam.Chau\\Desktop\\CODE\\Create section\\Create section\\TestingMethod.csproj",
       "packagesPath": "C:\\Users\\Tam.Chau\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Tam.Chau\\Desktop\\CODE\\Create section\\Create section\\obj\\",
       "projectStyle": "PackageReference",
